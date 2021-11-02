@@ -1,19 +1,25 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using FirstCode;
 
-namespace EF_CodeFirstApproach.Controllers
+namespace FirstCode.Controllers
 {
     public class CarsController : Controller
     {
         private CarDbContext db = new CarDbContext();
+
         // GET: CarModels
         public ActionResult Index()
         {
             return View(db.Cars.ToList());
         }
+
         // GET: CarModels/Details/5
         public ActionResult Details(int? id)
         {
@@ -28,14 +34,16 @@ namespace EF_CodeFirstApproach.Controllers
             }
             return View(carModel);
         }
+
         // GET: CarModels/Create
         public ActionResult Create()
         {
             return View();
         }
+
         // POST: CarModels/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CarId,Brand,Model")] CarModel carModel)
@@ -46,8 +54,10 @@ namespace EF_CodeFirstApproach.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(carModel);
         }
+
         // GET: CarModels/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -62,9 +72,10 @@ namespace EF_CodeFirstApproach.Controllers
             }
             return View(carModel);
         }
+
         // POST: CarModels/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CarId,Brand,Model")] CarModel carModel)
@@ -77,6 +88,7 @@ namespace EF_CodeFirstApproach.Controllers
             }
             return View(carModel);
         }
+
         // GET: CarModels/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -91,6 +103,7 @@ namespace EF_CodeFirstApproach.Controllers
             }
             return View(carModel);
         }
+
         // POST: CarModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -101,6 +114,7 @@ namespace EF_CodeFirstApproach.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
