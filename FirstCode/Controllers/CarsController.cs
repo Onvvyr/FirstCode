@@ -14,13 +14,13 @@ namespace FirstCode.Controllers
     {
         private CarDbContext db = new CarDbContext();
 
-        // GET: CarModels
+        // GET: Cars
         public ActionResult Index()
         {
             return View(db.Cars.ToList());
         }
 
-        // GET: CarModels/Details/5
+        // GET: Cars/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace FirstCode.Controllers
             return View(carModel);
         }
 
-        // GET: CarModels/Create
+        // GET: Cars/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CarModels/Create
+        // POST: Cars/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace FirstCode.Controllers
             return View(carModel);
         }
 
-        // GET: CarModels/Edit/5
+        // GET: Cars/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace FirstCode.Controllers
             return View(carModel);
         }
 
-        // POST: CarModels/Edit/5
+        // POST: Cars/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace FirstCode.Controllers
             return View(carModel);
         }
 
-        // GET: CarModels/Delete/5
+        // GET: Cars/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace FirstCode.Controllers
             return View(carModel);
         }
 
-        // POST: CarModels/Delete/5
+        // POST: Cars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
